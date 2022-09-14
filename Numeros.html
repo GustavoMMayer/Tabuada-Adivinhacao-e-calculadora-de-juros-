@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematicos aleatorios</title>
+    
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+body{
+  background-image: linear-gradient(rgb(211, 211, 236),rgb(154, 236, 154),yellow);
+  height: 100vh;
+    
+}
+.corpo{
+    display: flex;
+    margin: 30px;
+    
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.tabuada, .acerteNumero{
+    width: 400px;
+    
+}
+.tabuadaRes{
+    font-size: 20px;
+}
+h3{
+    margin-bottom: 20px;
+}
+input, button{
+    font-size: 15px;
+    padding: 5px;
+    border: 1px double red;
+    line-height: 20px;
+}
+.oculto{
+    display: none;
+}
+.resultado{
+    font-size: 23px;
+    border: 2px double red;
+    padding: 5px;
+    border-radius: 5px;
+    background-color:rgb(241, 181, 181);
+    
+}
+@media(max-width: 1000px){
+    .corpo{
+        display: block;
+        margin: 5px;
+    }
+    h3{
+        margin-top: 40px;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1> Bem vindo, funções e looping!!</h1>
+
+    <div class="corpo">
+        <div class="tabuada">
+            <h3>Gerador de tabuadas</h3>
+            <div class="tabBody"> Insira o numero da tabuada que deseja <br/>
+                <input type="number" id="tabNumber"/>
+                <button type="submit" id="submit" >Gerar</button>
+
+                <div class="tabuadaRes"></div>
+            </div>    
+        </div>
+        <div class="acerteNumero">
+            <h3>Acerte o número</h3>
+            <div> Será gerado um numero aleatorio entre 0 e 100, vc deve acertar com base nas pistas: </br>
+            <button tipe="submit" id="play">Iniciar</button>
+            <input type="number" id="palpite" >
+            <button tipe="reset" id="send" class="oculto">Enviar</button>
+            <div class="pista"></div>
+            <div class="resumo"></div>
+        </div>
+        </div>
+        <div class="calculadorJuros">
+            <h3>Calculo de juros compostos</h3>
+            <input type="number" id="c" placeholder="Capital inicial"></br>
+            <input type="number" id="i"placeholder="Taxa de juros mensal"></br>
+            <input type="number" id="t"placeholder="Tempo em meses"></br>
+            <button type="submit" id="calcular">Calcular</button>
+            <div class="resultado oculto"></div>
+
+        </div>
+
+    
+    </div>
+    <script>document.querySelector('#submit').addEventListener("click",tabuada);
+        document.querySelector('#tabNumber').addEventListener("keyPress", tabuada);
+        
+        function tabuada(){
+        
+            let number = document.querySelector('#tabNumber').value;
+            let resposta = ""; 
+            let rejex = /(0-9){1,}/;
+            for(let i=1; i<=10;i++ ){ 
+                resposta+= `${number}  x  ${i}  =  ${number*i}</br>`
+            }
+            
+            document.querySelector('.tabuadaRes').innerHTML =`Abaixo a tabuada do numero: ${number } !!</br>${resposta}`;
+            
+        }
+        // acerte o numero
+        document.querySelector('#play').addEventListener("click",inicializar);
+        document.querySelector('#send').addEventListener("click",acerteNumero);
+        let numero =0
+        let tentativas = 0
+        let numerosErrados = [];
+        function inicializar(){
+            numero = parseInt(Math.random()*100);
+            document.querySelector('#play').classList.add('oculto');
+            document.querySelector('#send').classList.remove('oculto');
+            
+        }
+        
+            function acerteNumero(){
+                
+                let palpite = document.querySelector('#palpite').value;
+                  
+                tentativas ++
+                numerosErrados.push(palpite);
+                if(numero==palpite){
+                    document.querySelector('.pista').innerHTML=`<h1>PARABÈNS, após ${tentativas} tentativas você acertou!!!</h1><span>Tentativas: ${numerosErrados}<span>`;
+                     inicializar();
+                     44
+                }else if( numero>palpite){
+                    document.querySelector('.pista').innerHTML='<h1>Numero sorteado é MAIOR, tente novamente!!</h1>';
+                    
+                    
+                }else{
+                    document.querySelector('.pista').innerHTML='<h1>Numero sorteado é MENOR, tente novamente!!</h1>';
+                               
+                }
+                palpite = document.querySelector('#palpite').value="";
+            
+            }
+        
+            // Calculos de juros
+            
+            document.querySelector("#calcular").addEventListener('click', calcular);
+        function calcular(){
+            let c = document.querySelector('#c').value;
+            let i = document.querySelector('#i').value;
+            let t = document.querySelector('#t').value;
+            let m = 0;
+            console.log(c);
+            console.log(i);
+            console.log(t);
+            console.log(m);
+            m = (c*((1+(i/100))**t));
+            
+            document.querySelector(".resultado").innerHTML =`Montante é: R$ ${m.toFixed(2)}`;
+            document.querySelector('.resultado').classList.remove('oculto');
+        }
+         </script>
+</body>
+</html>

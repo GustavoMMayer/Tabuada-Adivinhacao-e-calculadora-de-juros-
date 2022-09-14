@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematicos aleatorios</title>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+    <h1> Bem vindo, funções e looping!!</h1>
+
+    <div class="corpo">
+        <div class="tabuada">
+            <h3>Gerador de tabuadas</h3>
+            <div class="tabBody"> Insira o numero da tabuada que deseja <br/>
+                <input type="number" id="tabNumber"/>
+                <button type="submit" id="submit" >Gerar</button>
+
+                <div class="tabuadaRes"></div>
+            </div>    
+        </div>
+        <div class="acerteNumero">
+            <h3>Acerte o número</h3>
+            <div> Será gerado um numero aleatorio entre 0 e 100, vc deve acertar com base nas pistas: </br>
+            <button tipe="submit" id="play">Iniciar</button>
+            <input type="number" id="palpite" >
+            <button tipe="reset" id="send" class="oculto">Enviar</button>
+            <div class="pista"></div>
+            <div class="resumo"></div>
+        </div>
+        </div>
+        <div class="calculadorJuros">
+            <h3>Calculo de juros compostos</h3>
+            <input type="number" id="c" placeholder="Capital inicial"></br>
+            <input type="number" id="i"placeholder="Taxa de juros mensal"></br>
+            <input type="number" id="t"placeholder="Tempo em meses"></br>
+            <button type="submit" id="calcular">Calcular</button>
+            <div class="resultado oculto"></div>
+
+        </div>
+
+    
+    </div>
+    <script src="assets/js/script.js">
+    
+    </script>
+</body>
+</html>

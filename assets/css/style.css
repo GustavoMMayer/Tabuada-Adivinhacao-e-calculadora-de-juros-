@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+  background-image: linear-gradient(rgb(211, 211, 236),rgb(154, 236, 154),yellow);
+  height: 100vh;
+    
+}
+.corpo{
+    display: flex;
+    margin: 30px;
+    
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.tabuada, .acerteNumero{
+    width: 400px;
+    
+}
+.tabuadaRes{
+    font-size: 20px;
+}
+h3{
+    margin-bottom: 20px;
+}
+input, button{
+    font-size: 15px;
+    padding: 5px;
+    border: 1px double red;
+    line-height: 20px;
+}
+.oculto{
+    display: none;
+}
+.resultado{
+    font-size: 23px;
+    border: 2px double red;
+    padding: 5px;
+    border-radius: 5px;
+    background-color:rgb(241, 181, 181);
+    
+}
+@media(max-width: 1000px){
+    .corpo{
+        display: block;
+        margin: 5px;
+    }
+    h3{
+        margin-top: 40px;
+    }
+}
